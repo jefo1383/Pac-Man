@@ -1,0 +1,28 @@
+=== PAC-MAN 42 ===
+
+GOAL:
+Eat all the small dots (pacgums) to clear the level.
+Avoid the ghosts! If they catch you, you lose a life.
+Eat the big dots in the corners to become super-powered.
+Ghosts will turn blue and run away. Eat them!
+
+CONTROLS:
+- Arrow Keys or WASD: Move Pac-Man
+- ESC: Pause the game / Exit menus
+- C: View in-game instructions
+- N: Cheat - Skip Level
+- I: Cheat - Invincibility
+- L in the start menu : Launch a special mode
+
+CONFIGURATION:
+You can tweak the game parameters by opening the 'config.json' file in a text editor!
+You can change:
+- "lives": Number of starting lives.
+- "level_max_time": Time limit per level in seconds.
+- "points_per_ghost": Score awarded for eating a frightened ghost.
+- "highscore_filename": Name of file where scores are saved.
+- "size_levels": Size of the maze of each level.
+- "pacgum": Number of pacgums per level.
+- "points_per_pacgum": Score awarded for eating a pacgum.
+- "points_per_super_pacgum": Score awarded for eating a super pacgum.
+- "seed": Set the generation of the level 1 maze to a special seed.

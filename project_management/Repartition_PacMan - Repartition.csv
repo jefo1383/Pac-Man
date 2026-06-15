@@ -1,0 +1,13 @@
+Catégorie,Tâche à accomplir,Dépendances,Assignation (Yafranco / Jfoeller / Ensemble),status
+Socle & Données,Parser le fichier de configuration JSON (avec commentaires) et sécuriser les valeurs par défaut.,Aucune,jfoeller,OK
+Socle & Données,Intégrer le package A-Maze-ing pour la génération des niveaux.,Fichier de config,jfoeller,OK
+Socle & Données,Créer le système de sauvegarde et chargement des Highscores.,Aucune,yafranco,OK
+Moteur de jeu,"Créer la classe Joueur (déplacements, limites des murs, gestion des vies).",Labyrinthe chargé,yafranco,OK
+Moteur de jeu,"Développer l'IA et les états des 4 fantômes (chasse, fuite, retour au point de départ).  ",Labyrinthe chargé,jfoeller,OK
+Moteur de jeu,"Gérer les collisions (Pacgums, Super-pacgums, fantômes)",Joueur & Objets,jfoeller,OK
+Moteur de jeu,Gérer le calcul du score.,Joueur & Objets,yafranco,OK
+Interface (UI),"Mettre en place la boucle de jeu principale et la navigation entre les menus (Start, Pause, Game Over).",Aucune,jfoeller,OK
+Interface (UI),"Rendu graphique avec la librairie (dessin du labyrinthe, entités, HUD).",Données du jeu,yafranco,OK
+Transverse,"Implémenter le ""Cheat mode"" pour la correction.",Moteur de jeu,ensemble,OK
+Transverse,"Créer le Makefile (install, run, lint, etc.) et le script de packaging.",Fin du projet,jfoeller,OK
+Transverse,"Rédiger le README, la documentation technique et les documents de gestion de projet.",En continu,Ensemble,OK

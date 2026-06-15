@@ -1,0 +1,91 @@
+SOCLE & DONNEES
+"1. La lecture du fichier de configuration (JSON avec commentaires) Le sujet exige de lire un fichier JSON classique, mais en ignorant les lignes qui commencent par #."
+
+"Option A (Nettoyage manuel)(solution choisie) : Lire le fichier ligne par ligne, filtrer les lignes qui commencent par # ou les ignorer, reconstituer une chaîne de caractères propre, puis la donner au module standard json de Python."
+
+Option B (Expressions régulières) : Utiliser une RegEx pour repérer et supprimer les commentaires avant de parser le texte.
+
+2. Le système de persistance des Highscores Vous devez stocker les 10 meilleurs scores (nom + score) de manière robuste sur le disque.
+
+"Option A (Fichier JSON)(solution choisie) : Sauvegarder les scores dans un fichier .json dédié. C'est très lisible, facile à manipuler en Python (via des dictionnaires) et simple à modifier manuellement pour vos tests."
+
+"Option B (Fichier CSV/Texte) : Écrire les scores ligne par ligne avec un séparateur (ex: Sannaka,1110). Plus léger mais demande d'écrire son propre petit parseur."
+
+"Option C (Base de données) : Utiliser sqlite3. Très robuste, mais souvent considéré comme surdimensionné pour juste 10 lignes de score."
+
+"3. L'intégration du package externe ""A-Maze-ing"" Vous devez utiliser le générateur de labyrinthe codé par un autre groupe, tel quel."
+
+Option A (Couplage fort) : Importer et appeler directement leurs fonctions au milieu de votre code principal.
+
+Option B (Classe Adaptateur/Wrapper)(solution choisie) : Créer une classe intermédiaire dans votre projet qui s'occupe d'appeler leur package et de convertir leur format de labyrinthe vers un format propre à votre jeu. Cela protège votre code s'ils ont des structures de données étranges.
+
+MOTEUR DE JEU
+1. Système de déplacement et de collision 📏
+
+"Option A(solution choisie) : Basé sur la grille (Tile-based) : Le jeu considère que tout se passe dans des cases. Pac-Man est soit dans la case (2,3), soit en train de passer à la case (2,4). Les collisions sont simples : on vérifie juste si la case cible est un mur."
+
+"Option B : Basé sur les pixels (Smooth movement) : Le déplacement est fluide au pixel près. C'est plus joli, mais beaucoup plus complexe car il faut gérer les ""boîtes de collision"" (hitbox) et éviter que Pac-Man ne reste coincé dans un coin s'il tourne un pixel trop tôt."
+
+2. Intelligence Artificielle (IA) des Fantômes 👻
+
+Le sujet mentionne que chaque fantôme a un comportement unique.
+
+"Option A : Ciblage déterministe (Style Original) : Chaque fantôme a une ""cible"" logique. Par exemple, Blinky cible la position actuelle du joueur, tandis que Pinky cible 4 cases devant lui pour l'intercepter. C'est très gratifiant à coder mais demande de la précision."
+
+"Option B(solution choisie) : Aléatoire pondéré : Aux intersections, les fantômes choisissent une direction au hasard, mais avec une probabilité plus forte pour celle qui les rapproche de Pac-Man. C'est plus simple à implémenter."
+
+3. Gestion des États du Jeu (Machine à États) 🔄
+
+"Pac-Man change de comportement selon les événements (Super-pacgum mangé, collision avec un fantôme)."
+
+"Option A : Variables booléennes : Utiliser des if (is_frightened):. Simple au début, mais devient vite un ""code spaghetti"" quand on ajoute les timers et le clignotement de fin d'effet."
+
+"Option B(solution choisie) : Pattern State (POO) : Créer des classes ou des états distincts (NormalState, FrightenedState). C'est plus propre et facilite la maintenance."
+
+L'interface (UI)
+1. La gestion des différents écrans (Scènes) 🔄
+
+"Le jeu doit pouvoir naviguer entre le menu, la partie en cours, la pause et les écrans de victoire ou de défaite."
+
+"Option A (Boucle conditionnelle) : Utiliser une seule grande boucle avec des conditions (ex: if etat == ""MENU"": ... elif etat == ""JEU"": ...). C'est direct, mais le code peut devenir difficile à maintenir."
+
+Option B (Gestionnaire de scènes)(solution choisie) : Créer une classe distincte pour chaque écran gérée par un contrôleur central. Cette approche orientée objet  sépare la logique de chaque interface.
+
+2. Le rendu du texte et du HUD 🔠
+
+"Le HUD doit afficher le score, les vies, le niveau et le temps restant."
+
+"Option A (Texte natif)(solution choisie) : Utiliser les fonctions d'affichage de texte de la bibliothèque graphique choisie (MLX ou similaire). C'est immédiat, mais la personnalisation graphique (polices, tailles) est parfois limitée."
+
+"Option B (Texte par sprites) : Utiliser des images pour chaque lettre et chiffre. Cela garantit un rendu d'arcade authentique, mais exige de créer une fonction capable d'assembler ces images pour former des mots."
+
+3. L'architecture du rafraîchissement visuel 🖼️
+
+Option A (Rendu complet)(solution choisie) : Effacer l'écran et redessiner l'intégralité du labyrinthe et des entités à chaque itération.
+
+Option B (Rendu partiel) : Ne redessiner que les éléments qui ont changé de position ou d'état.
+
+TRANSVERSE
+"1. Le ""Cheat mode"" (Mode triche) 🐛"
+
+"Le sujet demande d'implémenter ce mode spécifiquement pour faciliter l'évaluation par vos pairs. Il peut inclure l'invincibilité, le gel des fantômes ou le passage au niveau suivant."
+
+"Option A (Raccourcis clavier secrets)(solution choisie) : Assigner des touches spécifiques (ex: F1 pour geler les fantômes, F2 pour l'invincibilité) écoutées directement par la boucle d'événements. C'est rapide à mettre en place."
+
+"Option B (Menu de débogage) : Créer un panneau visuel activable en jeu qui affiche l'état des triches avec des cases à cocher. C'est plus explicite pour le correcteur, mais demande un peu plus de travail sur l'interface."
+
+2. Le Packaging (Déploiement) 🚀
+
+Vous devez livrer un jeu complet qui peut être installé et lancé depuis une plateforme publique comme Itch.io ou Steam.
+
+"Option A (Exécutable autonome)(solution choisie) : Utiliser un outil comme PyInstaller pour compiler votre code Python et vos ressources (images, fichiers de configuration) en un seul binaire exécutable. Le joueur n'a alors pas besoin d'installer Python sur sa machine."
+
+"Option B (Package Python) : Créer une structure de package standard (avec un setup.py ou pyproject.toml) et demander à l'utilisateur de l'installer via un environnement virtuel. C'est plus léger, mais un peu moins ""prêt à jouer"" pour un public non-développeur."
+
+3. Gestion des dépendances et Makefile 🛠️
+
+"Votre Makefile doit automatiser l'installation, l'exécution, le nettoyage et le formatage du code. Il est fortement recommandé d'isoler ces dépendances."
+
+Option A (requirements.txt et venv) : La méthode classique. La règle install du Makefile crée un environnement virtuel et installe les paquets via pip.
+
+"Option B (Outils modernes)(solution choisie) : Utiliser des gestionnaires comme uv, pipx ou Poetry pour gérer les dépendances et l'exécution. C'est souvent plus rapide et garantit que les environnements de développement de Yafranco et Jfoeller restent strictement identiques."

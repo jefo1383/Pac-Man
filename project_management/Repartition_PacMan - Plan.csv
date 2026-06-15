@@ -1,0 +1,15 @@
+Semaine 1 : Les bases et la mécanique ⚙️
+
+Jours 1-2 (Phase 1) : Parsing du fichier de configuration JSON et intégration du package A-Maze-ing.
+
+Jours 3-4 (Phase 2) : Affichage graphique et déplacements du joueur à travers les couloirs.
+
+"Jour 5 (Début Phase 3) : Placement des pacgums et super-pacgums , et gestion de l'augmentation du score."
+
+"Semaine 2 : L'IA, l'interface et la finalisation 🚀"
+
+Jours 6-7 (Fin Phase 3) : Implémentation des comportements autonomes des 4 fantômes (chasse et fuite).
+
+"Jours 8-9 (Phase 4) : Création du HUD , des menus et du système persistant de highscores."
+
+"Jour 10 (Phase 5) : Développement du mode triche , création du package de déploiement et finalisation du README.md."
